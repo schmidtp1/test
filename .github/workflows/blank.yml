@@ -28,22 +28,11 @@ jobs:
           </html>
           EOL
       -
-        name: Archive artifact
-        shell: bash
-        run: |
-          tar \
-            --dereference --hard-dereference \
-            --directory public/ \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            .
-      -
-        name: Upload artifact
+        name: Archive and upload artifact
         if: success()
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ${{ runner.temp }}/artifact.tar
+          path: public/
           retention-days: 30
       -
         name: Deploy to GitHub Pages
