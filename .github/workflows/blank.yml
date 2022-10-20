@@ -7,7 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pages: write      # to deploy to Pages
+      deployments: write
       id-token: write   # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       -
         name: Checkout
@@ -36,5 +40,6 @@ jobs:
           retention-days: 30
       -
         name: Deploy to GitHub Pages
+        id: deployment
         if: success()
         uses: actions/deploy-pages@v1
