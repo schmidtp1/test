@@ -43,7 +43,6 @@ jobs:
         if: success()
         uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
           path: ${{ runner.temp }}/artifact.tar
           retention-days: 30
       -
