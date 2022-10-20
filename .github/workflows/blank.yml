@@ -27,9 +27,6 @@ jobs:
       -
         name: Deploy to GitHub Pages
         if: success()
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          target_branch: gh-pages
-          build_dir: public
+        uses: peaceiris/actions-gh-pages@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
